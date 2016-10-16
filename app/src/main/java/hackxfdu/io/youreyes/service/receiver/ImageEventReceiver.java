@@ -49,8 +49,13 @@ public class ImageEventReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         mCamera = getCameraInstance();
         if (mCamera != null) {
+            // Settings
+            Camera.Parameters parameters = mCamera.getParameters();
+            parameters.setPictureSize(3264, 2448);
+            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+            mCamera.setParameters(parameters);
+            // Start preview and take photos
             mCamera.startPreview();
-            // TODO: Some settings needed.
             mCamera.takePicture(null, null, (data, camera) -> {
                 // Need optimization
                 File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);

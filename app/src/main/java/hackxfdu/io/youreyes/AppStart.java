@@ -40,8 +40,8 @@ public class AppStart extends AppCompatActivity {
     }
 
     private void doStart() {
-        Intent serviceIntent = new Intent(this, ImageDistinguishService.class);
-        startService(serviceIntent);
+        /*Intent serviceIntent = new Intent(this, ImageDistinguishService.class);
+        startService(serviceIntent);*/
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
