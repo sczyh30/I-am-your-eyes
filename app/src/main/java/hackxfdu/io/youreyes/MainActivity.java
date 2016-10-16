@@ -19,14 +19,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import hackxfdu.io.youreyes.http.ImageHttpService;
 import hackxfdu.io.youreyes.http.SpeakTextService;
 import hackxfdu.io.youreyes.utils.AudioRecordFunc;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.Result;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -74,8 +77,17 @@ public class MainActivity extends AppCompatActivity {
                         fos.close();
                         mCamera.stopPreview();
 
+                        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+                        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                        OkHttpClient client = new OkHttpClient.Builder()
+                                .addInterceptor(interceptor)
+                                .retryOnConnectionFailure(true)
+                                .connectTimeout(15, TimeUnit.SECONDS)
+                                .build();
+
                         Retrofit retrofit = new Retrofit.Builder()
                                 .baseUrl(ImageHttpService.API_BASE)
+                                .client(client)
                                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                                 .build();
                         ImageHttpService service = retrofit.create(ImageHttpService.class);
@@ -109,8 +121,17 @@ public class MainActivity extends AppCompatActivity {
         mLingEndButton.setOnClickListener(v -> {
             AudioRecordFunc mRecord_1 = AudioRecordFunc.getInstance();
             mRecord_1.stopRecordAndFile();
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addInterceptor(interceptor)
+                    .retryOnConnectionFailure(true)
+                    .connectTimeout(15, TimeUnit.SECONDS)
+                    .build();
+
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(SpeakTextService.API_BASE)
+                    .client(client)
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
             SpeakTextService service = retrofit.create(SpeakTextService.class);
