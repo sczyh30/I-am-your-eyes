@@ -11,11 +11,19 @@ import android.os.SystemClock;
  *
  * @author sczyh30
  */
+public final class AlarmUtils {
 
-public final class AlarmUtil {
+    private AlarmUtils() {
+    }
 
-    private AlarmUtil() {}
-
+    /**
+     * Set a one-time alarm so that we can run tasks in the backend.
+     *
+     * @param context current context
+     * @param klass   the {@link Class} of the destination receiver
+     * @param period  task period
+     * @return true if the alarm is set correctly; else false
+     */
     public static boolean setAlarm(Context context, Class<?> klass, int period) {
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         if(alarmManager == null)
@@ -27,6 +35,15 @@ public final class AlarmUtil {
         return true;
     }
 
+    /**
+     * Set a periodic alarm so that we can run periodic tasks in the backend.
+     *
+     * @param mode repeat type
+     * @param context current context
+     * @param klass the {@link Class} of the destination receiver
+     * @param period task period
+     * @return true if the alarm is set correctly; else false
+     */
     public static boolean setPeriodic(int mode, Context context, Class<?> klass, int period) {
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         if(alarmManager == null) {

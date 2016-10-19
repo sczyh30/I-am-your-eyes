@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
-import hackxfdu.io.youreyes.service.ImageDistinguishService;
+import hackxfdu.io.youreyes.ui.MainActivity;
 
 
 /**
@@ -22,6 +22,7 @@ public class AppStart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         final View view = View.inflate(this, R.layout.activity_welcome, null);
         setContentView(view);
+        // Start a transition animation
         AlphaAnimation aa = new AlphaAnimation(0.5f, 1.0f);
         aa.setDuration(1000);
         view.startAnimation(aa);
@@ -32,16 +33,19 @@ public class AppStart extends AppCompatActivity {
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) {}
+            public void onAnimationRepeat(Animation animation) {
+            }
 
             @Override
-            public void onAnimationStart(Animation animation) {}
+            public void onAnimationStart(Animation animation) {
+            }
         });
     }
 
+    /**
+     * Start the main activity.
+     */
     private void doStart() {
-        /*Intent serviceIntent = new Intent(this, ImageDistinguishService.class);
-        startService(serviceIntent);*/
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

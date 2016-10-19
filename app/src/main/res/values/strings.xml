@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">我是你的眼</string>
     <string name="image_dist">图像认知</string>
+    <string name="title_activity_settings">设定</string>
+    <string name="err_no_available_camera">没有可用的摄像头，请检查系统设置</string>
+    <string name="err_no_available_internet">没有可用的网络，请检查系统设置</string>
+    <string name="err_request_fail_common">请求失败，请稍后再试</string>
+    <string name="err_network_not_stable">网络不稳定</string>
 </resources>

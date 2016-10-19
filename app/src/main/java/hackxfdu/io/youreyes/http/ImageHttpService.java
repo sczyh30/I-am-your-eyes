@@ -14,7 +14,6 @@ import rx.Observable;
  *
  * @author sczyh30
  */
-
 public interface ImageHttpService {
 
     String API_BASE = "http://10.221.65.83:8000/";

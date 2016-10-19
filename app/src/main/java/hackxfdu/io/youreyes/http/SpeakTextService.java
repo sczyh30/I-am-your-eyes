@@ -1,6 +1,5 @@
 package hackxfdu.io.youreyes.http;
 
-import hackxfdu.io.youreyes.entity.ImageResult;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.adapter.rxjava.Result;
@@ -15,7 +14,6 @@ import rx.Observable;
  *
  * @author sczyh30
  */
-
 public interface SpeakTextService {
 
     String API_BASE = "http://10.221.65.83:8000/";

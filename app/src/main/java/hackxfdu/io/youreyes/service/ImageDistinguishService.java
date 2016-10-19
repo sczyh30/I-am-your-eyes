@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 
 import hackxfdu.io.youreyes.service.receiver.ImageEventReceiver;
-import hackxfdu.io.youreyes.utils.AlarmUtil;
+import hackxfdu.io.youreyes.utils.AlarmUtils;
 
 /**
  * Image distinguishing service.
@@ -22,8 +22,8 @@ public class ImageDistinguishService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        // TODO: read period settings
-        AlarmUtil.setPeriodic(this, ImageEventReceiver.class, period);
+        // TODO: read period settings from user
+        AlarmUtils.setPeriodic(this, ImageEventReceiver.class, period);
     }
 
     @Override

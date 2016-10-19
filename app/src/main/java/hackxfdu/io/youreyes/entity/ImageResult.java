@@ -2,11 +2,14 @@ package hackxfdu.io.youreyes.entity;
 
 /**
  * Image distinguishing result entity.
+ *
+ * @author sczyh30
  */
 
 public class ImageResult {
-    String description;
-    Ocr ocr;
+
+    private String description;
+    private String ocr;
 
     public String getDescription() {
         return description;
@@ -16,11 +19,11 @@ public class ImageResult {
         this.description = description;
     }
 
-    public Ocr getOcr() {
+    public String getOcr() {
         return ocr;
     }
 
-    public void setOcr(Ocr ocr) {
+    public void setOcr(String ocr) {
         this.ocr = ocr;
     }
 }
