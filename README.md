@@ -1,5 +1,7 @@
 # 我是你的眼
 
+[![Build Status](https://travis-ci.org/sczyh30/I-am-your-eyes.svg?branch=master)](https://travis-ci.org/sczyh30/I-am-your-eyes)
+
 **I am your eyes** (我是你的眼) is an intelligent APP for blind people using
 Microsoft Cognitive Service and IBM Bluemix.
 

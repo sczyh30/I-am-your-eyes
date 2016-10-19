@@ -12,3 +12,6 @@ android:
     # Additional components
     - extra-google-m2repository
     - extra-android-m2repository
+
+script:
+  - ./gradlew clean assemble
